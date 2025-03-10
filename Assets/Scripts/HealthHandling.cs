@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthHandling : MonoBehaviour
 {
@@ -26,5 +27,10 @@ public class HealthHandling : MonoBehaviour
         healthPercentage = Mathf.Clamp(healthPercentage, 0f, 1f);
         
         gameObject.GetComponent<RectTransform>().localScale = new Vector3(healthPercentage, 1, 1);
+
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }
