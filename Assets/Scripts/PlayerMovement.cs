@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private float lastDash;
     float dashCooldownStart;
+    public float knockbackForce = 5f;
+    public float knockbackDuration = 0.3f;
     float speedX, speedY;
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject hitbox;
     private GameObject player;
     private HealthHandling healthScript;
+    public Camera MainCamera;
     
     // START //
     void Start()
@@ -75,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
             dashCooldownStart = Time.time;
 
             player.transform.Find("Dash Particles").GetComponent<ParticleSystem>().Play();
+            MainCamera.GetComponent<CameraFollow>().moveLerpSpeed = 10f;
         }
 
         if (dashing && Time.time >= lastDash + dashDuration)
@@ -83,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
             dashing = false;
 
             player.transform.Find("Dash Particles").GetComponent<ParticleSystem>().Stop();
+            MainCamera.GetComponent<CameraFollow>().moveLerpSpeed = 2f;
         }
 
         if (!canDash && Time.time >= dashCooldownStart + dashCooldown)
@@ -115,4 +120,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void onCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Rigidbody2D enemyRb = other.gameObject.GetComponent<Rigidbody2D>();
+            enemyRb.velocity = Vector2.zero;
+        }
+    }
 }

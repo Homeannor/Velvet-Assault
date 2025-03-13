@@ -22,12 +22,14 @@ public class EnemyController : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth = 100f;
     private ScoreHandling scoreScript;
+    private HealthHandling healthScript;
     public GameObject hitbox;
 
     // START //
     void Start()
     {
         hitbox = GameObject.FindGameObjectWithTag("EnemyHitbox");
+        healthScript = GameObject.Find("Bar").GetComponent<HealthHandling>();
 
         if (player == null)
         {
@@ -71,6 +73,8 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             scoreScript.updateScore(scoreReward);
+            player.GetComponent<PlayerMovement>().currentHealth += 25f;
+            healthScript.updateHealth();
             Destroy(gameObject);
         }
 
