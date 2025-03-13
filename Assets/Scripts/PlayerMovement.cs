@@ -73,12 +73,16 @@ public class PlayerMovement : MonoBehaviour
             lastDash = Time.time;
             speed = dashSpeed;
             dashCooldownStart = Time.time;
+
+            player.transform.Find("Dash Particles").GetComponent<ParticleSystem>().Play();
         }
 
         if (dashing && Time.time >= lastDash + dashDuration)
         {
             speed = 5f;
             dashing = false;
+
+            player.transform.Find("Dash Particles").GetComponent<ParticleSystem>().Stop();
         }
 
         if (!canDash && Time.time >= dashCooldownStart + dashCooldown)
