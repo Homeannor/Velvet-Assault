@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public float scoreReward = 10f;
     public float randomOffset;
     private bool shouldFollow = false;
+    public float strength = 10f;
 
     // Health & Score Variables
     public float maxHealth = 100f;
@@ -56,6 +57,8 @@ public class EnemyController : MonoBehaviour
             hitboxClone.transform.position += new Vector3(isFlipped ? -2 : 2, 0, 0);
             hitboxClone.GetComponent<SpriteRenderer>().flipX = isFlipped;
             hitboxClone.SetActive(true);
+            hitboxClone.GetComponent<HitboxCollision>().hitboxCreator = gameObject;
+            hitboxClone.GetComponent<HitboxCollision>().knockbackForce = strength;
 
             Destroy(hitboxClone, 0.3f);
         }

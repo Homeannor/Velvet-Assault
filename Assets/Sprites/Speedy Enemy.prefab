@@ -180,6 +180,7 @@ MonoBehaviour:
   attackDamage: 3
   scoreReward: 75
   randomOffset: 0
+  strength: 20
   maxHealth: 200
   currentHealth: 200
   hitbox: {fileID: 0}
