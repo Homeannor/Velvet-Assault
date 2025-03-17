@@ -184,4 +184,4 @@ MonoBehaviour:
   maxHealth: 350
   currentHealth: 350
   hitbox: {fileID: 0}
-  cooldownTime: 1
+  cooldownTime: 2

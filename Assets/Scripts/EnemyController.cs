@@ -73,8 +73,15 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             scoreScript.updateScore(scoreReward);
-            player.GetComponent<PlayerMovement>().currentHealth += 25f;
-            healthScript.updateHealth();
+           
+            float playerHealth = player.GetComponent<PlayerMovement>().currentHealth;
+
+            if (playerHealth < player.GetComponent<PlayerMovement>().maxHealth)
+            {
+                player.GetComponent<PlayerMovement>().currentHealth += 10f;
+                healthScript.updateHealth();
+                Debug.Log("Player healed by 10 health");
+            }
             Destroy(gameObject);
         }
 
