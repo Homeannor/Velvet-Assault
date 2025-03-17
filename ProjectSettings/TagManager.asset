@@ -7,6 +7,7 @@ TagManager:
   - Hitbox
   - Enemy
   - EnemyHitbox
+  - Door
   layers:
   - Default
   - TransparentFX

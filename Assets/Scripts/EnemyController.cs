@@ -82,6 +82,13 @@ public class EnemyController : MonoBehaviour
                 healthScript.updateHealth();
                 Debug.Log("Player healed by 10 health");
             }
+
+            GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
+            foreach (GameObject door in doors)
+            {
+                door.GetComponent<DoorSystem>().enemiesLeft -= 1;
+            }
+
             Destroy(gameObject);
         }
 
