@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        healthScript.updateHealth();
     }
 
     // UPDATE //

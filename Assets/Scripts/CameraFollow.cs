@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
         targetPosition.z = transform.position.z;
         
         gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, targetPosition, moveLerpSpeed * Time.deltaTime);
-        Debug.Log("Player Position: " + followTransform.position);
-        Debug.Log("Current Camera Pos: " + gameObject.transform.position);
+        // Debug.Log("Player Position: " + followTransform.position);
+        // Debug.Log("Current Camera Pos: " + gameObject.transform.position);
     }
 }

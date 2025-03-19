@@ -8,12 +8,14 @@ public class HitboxCollision : MonoBehaviour
     public float knockbackDuration = 0.3f;
     public float damage = 10f;
     public GameObject hitboxCreator;
+    public GameObject minibarClone;
 
     private HealthHandling healthScript;
 
     void Start()
     {
         healthScript = GameObject.Find("Bar").GetComponent<HealthHandling>();
+        minibarClone = GameObject.Find("Minibar");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,6 +39,19 @@ public class HitboxCollision : MonoBehaviour
                 {
                     other.GetComponent<EnemyController>().currentHealth -= damage;
                     Debug.Log("Dealt " + damage + " damage to the enemy");
+
+                    // Spawn Minibar
+                    if (!other.transform.Find("Minibar(Clone)"))
+                    {
+                        GameObject newMinibar = Instantiate(minibarClone, other.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+                        newMinibar.transform.SetParent(other.transform);
+                        newMinibar.GetComponent<MinibarHandling>().barOwner = other.gameObject;
+                       newMinibar.GetComponent<MinibarHandling>().updateBar();
+                    }
+                    else
+                    {
+                        other.transform.Find("Minibar(Clone)").GetComponent<MinibarHandling>().updateBar();
+                    }
                 }
             }
         }

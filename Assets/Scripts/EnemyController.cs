@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
-        scoreScript = GameObject.Find("Score").GetComponent<ScoreHandling>();
+        scoreScript = GameObject.Find("Canvas").GetComponent<ScoreHandling>();
         shouldFollow = true;
         randomOffset = Random.Range(-1f, 1f);
     }
