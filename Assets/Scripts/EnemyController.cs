@@ -78,9 +78,9 @@ public class EnemyController : MonoBehaviour
 
             if (playerHealth < player.GetComponent<PlayerMovement>().maxHealth)
             {
-                player.GetComponent<PlayerMovement>().currentHealth += 10f;
+                player.GetComponent<PlayerMovement>().currentHealth += 2f;
                 healthScript.updateHealth();
-                Debug.Log("Player healed by 10 health");
+                // Debug.Log("Player healed by 10 health");
             }
 
             GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");

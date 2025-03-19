@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 public class HealthHandling : MonoBehaviour
 {
     public GameObject player;
+    public TextMeshProUGUI healthText;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,8 @@ public class HealthHandling : MonoBehaviour
         float maxHealth = player.GetComponent<PlayerMovement>().maxHealth;
         float healthPercentage = (currentHealth / maxHealth);
         healthPercentage = Mathf.Clamp(healthPercentage, 0f, 1f);
-        
+
+        healthText.text = (healthPercentage * 100) + "%";
         gameObject.GetComponent<RectTransform>().localScale = new Vector3(healthPercentage, 1, 1);
 
         if (currentHealth <= 0)

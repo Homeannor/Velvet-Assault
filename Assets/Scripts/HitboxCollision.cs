@@ -46,7 +46,7 @@ public class HitboxCollision : MonoBehaviour
                         GameObject newMinibar = Instantiate(minibarClone, other.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
                         newMinibar.transform.SetParent(other.transform);
                         newMinibar.GetComponent<MinibarHandling>().barOwner = other.gameObject;
-                       newMinibar.GetComponent<MinibarHandling>().updateBar();
+                        newMinibar.GetComponent<MinibarHandling>().updateBar();
                     }
                     else
                     {
