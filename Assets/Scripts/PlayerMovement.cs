@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     float dashCooldownStart;
     public float knockbackForce = 5f;
     public float knockbackDuration = 0.3f;
+    public string roomName = "[1] Shop Entrance";
     float speedX, speedY;
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -33,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         hitbox = GameObject.FindGameObjectWithTag("Hitbox");
         healthScript = GameObject.Find("Bar").GetComponent<HealthHandling>();
-        
+        roomName = "[1] Shop Entrance";
+
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
 
