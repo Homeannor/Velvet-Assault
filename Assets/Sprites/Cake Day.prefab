@@ -176,7 +176,7 @@ MonoBehaviour:
   moveSpeed: 4
   followChance: 0.5
   stopDistance: 40
-  attackRange: 2
+  attackRange: 3
   attackDamage: 1
   scoreReward: 1000
   randomOffset: 0

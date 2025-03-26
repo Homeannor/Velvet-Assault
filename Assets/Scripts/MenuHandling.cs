@@ -16,4 +16,9 @@ public class MenuHandling : MonoBehaviour
         Application.Quit();
         EditorApplication.isPlaying = false;
     }
+
+    public void returnToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -73,7 +74,7 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0f)
         {
             scoreScript.updateScore(scoreReward);
-            GameObject.Find("Player").GetComponent<PlayerMovement>().currentHealth += 4f;
+            GamedObject.Find("Player").GetComponent<PlayerMovement>().currentHealth += 6f;
             GameObject.Find("Bar").GetComponent<HealthHandling>().updateHealth();
             // Debug.Log("Healed Player by 3");
 
@@ -81,6 +82,11 @@ public class EnemyController : MonoBehaviour
             foreach (GameObject door in doors)
             {
                 door.GetComponent<DoorSystem>().enemiesLeft -= 1f;
+            }
+
+            if (gameObject.name == "Cake Day")
+            {
+                SceneManager.LoadScene(3);
             }
 
             Destroy(gameObject);
