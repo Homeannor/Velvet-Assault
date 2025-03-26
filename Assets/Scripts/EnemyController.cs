@@ -70,16 +70,17 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         // Health Check
-        if (currentHealth <= 0)
+        if (currentHealth <= 0f)
         {
             scoreScript.updateScore(scoreReward);
-            player.gameObject.GetComponent<PlayerMovement>().currentHealth = Mathf.Clamp(player.gameObject.GetComponent<PlayerMovement>().currentHealth + 3f, 0f, player.gameObject.GetComponent<PlayerMovement>().maxHealth);
-            Debug.Log("Healed Player by 3");
+            GameObject.Find("Player").GetComponent<PlayerMovement>().currentHealth += 4f;
+            GameObject.Find("Bar").GetComponent<HealthHandling>().updateHealth();
+            // Debug.Log("Healed Player by 3");
 
             GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
             foreach (GameObject door in doors)
             {
-                door.GetComponent<DoorSystem>().enemiesLeft -= 1;
+                door.GetComponent<DoorSystem>().enemiesLeft -= 1f;
             }
 
             Destroy(gameObject);

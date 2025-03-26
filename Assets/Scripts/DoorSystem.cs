@@ -10,6 +10,7 @@ public class DoorSystem : MonoBehaviour
     public TextMeshProUGUI roomText;
     public GameObject player;
     public GameObject healthBar;
+    public GameObject enemiesFolder;
 
     void Start()
     {
@@ -60,6 +61,8 @@ public class DoorSystem : MonoBehaviour
         {
             player.GetComponent<PlayerMovement>().roomName = "[BOSS] ... Cake Day!?";
         }
+
+        enemiesFolder.transform.Find(player.GetComponent<PlayerMovement>().roomName).gameObject.SetActive(true);
 
         roomText.text = player.GetComponent<PlayerMovement>().roomName;
         player.GetComponent<PlayerMovement>().currentHealth = Mathf.Clamp(player.GetComponent<PlayerMovement>().currentHealth + 25f, 0f, player.GetComponent<PlayerMovement>().maxHealth);

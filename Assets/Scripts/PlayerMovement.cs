@@ -59,6 +59,12 @@ public class PlayerMovement : MonoBehaviour
             currentHealth = Mathf.Max(0, currentHealth - 10f);
             healthScript.updateHealth();
         }*/
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+            healthScript.updateHealth();
+        }
     }
 
     public void MovementLogic()
