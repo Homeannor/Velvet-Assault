@@ -74,7 +74,7 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0f)
         {
             scoreScript.updateScore(scoreReward);
-            GamedObject.Find("Player").GetComponent<PlayerMovement>().currentHealth += 6f;
+            GameObject.Find("Player").GetComponent<PlayerMovement>().currentHealth += 6f;
             GameObject.Find("Bar").GetComponent<HealthHandling>().updateHealth();
             // Debug.Log("Healed Player by 3");
 
