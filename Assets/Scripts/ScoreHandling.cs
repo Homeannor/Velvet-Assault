@@ -9,7 +9,7 @@ public class ScoreHandling : MonoBehaviour
 {
     public GameObject player;
     private float score;
-    private float timer;
+    public float timer;
 
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI scoreText;

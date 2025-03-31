@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +27,8 @@ public class EnemyController : MonoBehaviour
     private ScoreHandling scoreScript;
     private HealthHandling healthScript;
     public GameObject hitbox;
+    public TextMeshProUGUI rankText;
+    public TextMeshProUGUI finalTimerText;
 
     // START //
     void Start()
@@ -39,7 +43,7 @@ public class EnemyController : MonoBehaviour
 
         scoreScript = GameObject.Find("Canvas").GetComponent<ScoreHandling>();
         shouldFollow = true;
-        randomOffset = Random.Range(-1f, 1f);
+        // randomOffset = Random.Range(-1f, 1f);
     }
 
     private float lastHitboxTime;
@@ -86,6 +90,34 @@ public class EnemyController : MonoBehaviour
 
             if (gameObject.name == "Cake Day")
             {
+                TimeSpan finalTime = TimeSpan.FromSeconds(scoreScript.timer);
+                PlayerPrefs.SetString("FinalTime", finalTime.Minutes.ToString("00") + ":" + finalTime.Seconds.ToString("00") + ":" + finalTime.Milliseconds.ToString("000"));
+                
+                if (scoreScript.timer < 360f)
+                {
+                    PlayerPrefs.SetString("FinalRank", "S");
+                }
+                else if (scoreScript.timer < 420f)
+                {
+                    PlayerPrefs.SetString("FinalRank", "A");
+                }
+                else if (scoreScript.timer < 480f)
+                {
+                    PlayerPrefs.SetString("FinalRank", "B");
+                }
+                else if (scoreScript.timer < 540f)
+                {
+                    PlayerPrefs.SetString("FinalRank", "C");
+                }
+                else if (scoreScript.timer < 600f)
+                {
+                    PlayerPrefs.SetString("FinalRank", "D");
+                }
+                else
+                {
+                    PlayerPrefs.SetString("FinalRank", "F");
+                }
+                
                 SceneManager.LoadScene(3);
             }
 
