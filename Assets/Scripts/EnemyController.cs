@@ -93,23 +93,23 @@ public class EnemyController : MonoBehaviour
                 TimeSpan finalTime = TimeSpan.FromSeconds(scoreScript.timer);
                 PlayerPrefs.SetString("FinalTime", finalTime.Minutes.ToString("00") + ":" + finalTime.Seconds.ToString("00") + ":" + finalTime.Milliseconds.ToString("000"));
                 
-                if (scoreScript.timer < 360f)
+                if (scoreScript.timer < 420f)
                 {
                     PlayerPrefs.SetString("FinalRank", "S");
                 }
-                else if (scoreScript.timer < 420f)
+                else if (scoreScript.timer < 480f)
                 {
                     PlayerPrefs.SetString("FinalRank", "A");
                 }
-                else if (scoreScript.timer < 480f)
+                else if (scoreScript.timer < 540f)
                 {
                     PlayerPrefs.SetString("FinalRank", "B");
                 }
-                else if (scoreScript.timer < 540f)
+                else if (scoreScript.timer < 600f)
                 {
                     PlayerPrefs.SetString("FinalRank", "C");
                 }
-                else if (scoreScript.timer < 600f)
+                else if (scoreScript.timer < 660f)
                 {
                     PlayerPrefs.SetString("FinalRank", "D");
                 }
