@@ -101,12 +101,12 @@ public class HitboxCollision : MonoBehaviour
         
         while (timeElapsed < knockbackDuration)
         {
-            enemyRb.velocity = knockbackDirection * knockbackForce * (1f - (timeElapsed / knockbackDuration));
+            enemyRb.linearVelocity = knockbackDirection * knockbackForce * (1f - (timeElapsed / knockbackDuration));
             timeElapsed += Time.deltaTime;
             yield return null;
         }
 
-        enemyRb.velocity = Vector2.zero;
+        enemyRb.linearVelocity = Vector2.zero;
     }
 
 }

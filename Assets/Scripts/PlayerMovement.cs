@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     {
         speedX = Input.GetAxis("Horizontal") * speed;
         speedY = Input.GetAxis("Vertical") * speed;
-        rb.velocity = new Vector2(speedX, speedY);
+        rb.linearVelocity = new Vector2(speedX, speedY);
 
         // Flip the player sprite
         sr.flipX = speedX < 0;
@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Rigidbody2D enemyRb = other.gameObject.GetComponent<Rigidbody2D>();
-            enemyRb.velocity = Vector2.zero;
+            enemyRb.linearVelocity = Vector2.zero;
         }
     }
 }
